@@ -49,6 +49,29 @@
         android:layout_marginTop="10dp"
         />
 
+    <TextView
+        android:id="@+id/date_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Date"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/foodNameInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.576" />
+
+    <Button
+        android:id="@+id/date_picker_btn"
+        android:layout_width="171dp"
+        android:layout_height="57dp"
+        android:text="날짜를 선택하세요."
+        app:layout_constraintBottom_toTopOf="@+id/foodNameInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_text_view"
+        app:layout_constraintVertical_bias="0.401" />
+
     <EditText
         android:id="@+id/foodNameInput"
         android:layout_width="320dp"
@@ -61,7 +84,7 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectImageBtn"
-        app:layout_constraintVertical_bias="0.119" />
+        app:layout_constraintVertical_bias="0.463" />
 
     <EditText
         android:id="@+id/foodRatingInput"
@@ -75,7 +98,21 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectImageBtn"
-        app:layout_constraintVertical_bias="0.251" />
+        app:layout_constraintVertical_bias="0.598" />
+
+    <EditText
+        android:id="@+id/foodCostInput"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:hint="섭취한 음식의 비용을 입력해주세요 ( 단위: 원 )"
+        android:inputType="text"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectImageBtn"
+        app:layout_constraintVertical_bias="0.733" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,9 +6,11 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -17,19 +19,49 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
     Uri uri;
     ImageView imageView;
 
+    TextView dateText;
+    DatePickerDialog datePickerDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        dateText = findViewById(R.id.date_text_view);
+        Button datePickerBtn = findViewById(R.id.date_picker_btn);
+
+        datePickerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar calendar = Calendar.getInstance();
+                int pYear = calendar.get(Calendar.YEAR);
+                int pMonth = calendar.get(Calendar.MONTH);
+                int pDay = calendar.get(Calendar.DAY_OF_MONTH);
+
+                datePickerDialog = new DatePickerDialog(MainActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                                month = month + 1;
+                                String date = year + "/" + month + "/" + day;
+
+                                dateText.setText(date);
+                            }
+                        }, pYear, pMonth, pDay);
+                datePickerDialog.show();
+            }
+        });
 
         Button selectImageBtn = findViewById(R.id.selectImageBtn);
         imageView = findViewById(R.id.imageView);
@@ -42,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivityResult.launch(intent);
             }
         });
-
 
         Spinner placeSpinner = (Spinner) findViewById(R.id.spinner_place);
         ArrayAdapter placeAdapter = ArrayAdapter.createFromResource(this,
