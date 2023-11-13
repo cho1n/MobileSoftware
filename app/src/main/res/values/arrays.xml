@@ -5,5 +5,10 @@
         <item>상록원 3층</item>
         <item>기숙사 식당</item>
     </string-array>
+    <string-array name="kind_for_food">
+        <item>조식</item>
+        <item>중식</item>
+        <item>석식</item>
+    </string-array>
 
 </resources>

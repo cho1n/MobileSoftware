@@ -81,6 +81,12 @@ public class MainActivity extends AppCompatActivity {
         placeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         placeSpinner.setAdapter(placeAdapter);
 
+        Spinner kindSpinner = (Spinner) findViewById(R.id.spinner_kind);
+        ArrayAdapter kindAdapter = ArrayAdapter.createFromResource(this,
+                R.array.kind_for_food, android.R.layout.simple_spinner_item);
+        kindAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        kindSpinner.setAdapter(kindAdapter);
+
     }
 
     ActivityResultLauncher<Intent> startActivityResult = registerForActivityResult(
