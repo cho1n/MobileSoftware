@@ -10,14 +10,25 @@
         android:id="@+id/textView"
         android:layout_width="99dp"
         android:layout_height="30dp"
-        android:layout_marginStart="15dp"
-        android:text="식사 장소"
         android:layout_gravity="center"
+        android:layout_marginStart="44dp"
         android:gravity="center"
+        android:text="식사 장소"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.171" />
+        app:layout_constraintVertical_bias="0.068" />
+
+    <Spinner
+        android:id="@+id/spinner_place"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="48dp"
+        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.323"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/selectImageBtn"
@@ -29,7 +40,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_place"
-        app:layout_constraintVertical_bias="0.204" />
+        app:layout_constraintVertical_bias="0.077" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -38,16 +49,33 @@
         android:layout_marginTop="10dp"
         />
 
-    <Spinner
-        android:id="@+id/spinner_place"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="120dp"
-        android:layout_weight="1"
+    <EditText
+        android:id="@+id/foodNameInput"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:hint="음식 혹은 반찬 이름을 입력해주세요. ( 음료인 경우 음료의 이름 )"
+        android:inputType="text"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.474"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectImageBtn"
+        app:layout_constraintVertical_bias="0.119" />
+
+    <EditText
+        android:id="@+id/foodRatingInput"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:hint="음식의 소감 및 평을 입력해주세요."
+        android:inputType="text"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectImageBtn"
+        app:layout_constraintVertical_bias="0.251" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
