@@ -9,8 +9,10 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,6 +22,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.mobilesoftware.DataStructure.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -40,6 +44,29 @@ public class MainActivity extends AppCompatActivity {
 
         dateText = findViewById(R.id.date_text_view);
         Button datePickerBtn = findViewById(R.id.date_picker_btn);
+        Button submitBtn = findViewById(R.id.submitButton);
+
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+                                         @Override
+                                         public void onClick(View view) {
+                                             String date = dateText.getText().toString();
+                                             String kind = ((Spinner) findViewById(R.id.spinner_kind)).getSelectedItem().toString();
+                                             String imageUrl = uri.toString();
+                                             String place = ((Spinner) findViewById(R.id.spinner_place)).getSelectedItem().toString();
+                                             String foodName = ((EditText) findViewById(R.id.foodNameInput)).getText().toString();
+                                             String cost = ((EditText) findViewById(R.id.foodCostInput)).getText().toString();
+                                             String time = ((EditText) findViewById(R.id.foodTimeInput)).getText().toString();
+                                             String rating = ((EditText) findViewById(R.id.foodRatingInput)).getText().toString();
+
+                                             Food food = new Food(date, kind, imageUrl, place, foodName, cost, time, rating);
+
+                                             FoodDatabaseHelper dbHelper = new FoodDatabaseHelper(MainActivity.this);
+                                             dbHelper.addFood(food);
+
+                                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                                             startActivity(intent);
+                                         }
+                                     });
 
         datePickerBtn.setOnClickListener(new View.OnClickListener() {
             @Override

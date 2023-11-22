@@ -14,43 +14,62 @@
         android:text="Select Date"
         android:textAlignment="center"
         android:textSize="30sp"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="45dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.037" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="150dp"
-        android:layout_height="69dp"
+        android:layout_height="43dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:text="식사 종류"
         android:textAlignment="center"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="310dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.366" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="69dp"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="395dp" />
+        android:layout_width="180dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.53" />
 
     <Spinner
         android:id="@+id/spinner_kind"
-        android:layout_width="150dp"
-        android:layout_height="69dp"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
         android:layout_weight="1"
-        tools:layout_editor_absoluteX="218dp"
-        tools:layout_editor_absoluteY="310dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.868"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.364" />
 
     <Spinner
         android:id="@+id/spinner_place"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
         android:layout_weight="1"
-        tools:layout_editor_absoluteX="218dp"
-        tools:layout_editor_absoluteY="225dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.856"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.267" />
 
     <TextView
         android:id="@+id/textView"
@@ -61,18 +80,25 @@
         android:text="식사 장소"
         android:textAlignment="center"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="231dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.264" />
 
     <EditText
         android:id="@+id/foodNameInput"
         android:layout_width="345dp"
-        android:layout_height="41dp"
+        android:layout_height="45dp"
         android:hint="음식 혹은 반찬 이름을 입력해주세요. ( 음료인 경우 음료의 이름 )"
         android:inputType="text"
         android:textSize="12dp"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="481dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.688" />
 
     <EditText
         android:id="@+id/foodCostInput"
@@ -81,8 +107,11 @@
         android:hint="섭취한 음식의 비용을 입력해주세요 ( 단위: 원 )"
         android:inputType="text"
         android:textSize="12dp"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="570dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.819" />
 
     <EditText
         android:id="@+id/foodTimeInput"
@@ -91,8 +120,11 @@
         android:hint="식사 시간을 입력해주세요. ( 예: 12:30 )"
         android:inputType="text"
         android:textSize="12dp"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="623dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.884" />
 
     <EditText
         android:id="@+id/foodRatingInput"
@@ -101,35 +133,49 @@
         android:hint="음식의 소감 및 평을 입력해주세요."
         android:inputType="text"
         android:textSize="12dp"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="522dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.753" />
 
     <Button
         android:id="@+id/date_picker_btn"
         android:layout_width="180dp"
-        android:layout_height="69dp"
+        android:layout_height="50dp"
         android:text="날짜를 선택하세요."
         android:textSize="16dp"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="125dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.155" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/selectImageBtn"
-        android:layout_width="150dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:background="#576A4F"
         android:text="이미지 가져오기"
         android:textColor="@color/white"
-        tools:layout_editor_absoluteX="218dp"
-        tools:layout_editor_absoluteY="416dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.528" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="저장하기"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="677dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
