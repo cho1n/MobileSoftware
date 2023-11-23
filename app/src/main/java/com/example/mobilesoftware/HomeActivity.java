@@ -3,6 +3,7 @@ package com.example.mobilesoftware;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +13,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -29,7 +33,9 @@ public class HomeActivity extends AppCompatActivity {
         transaction.replace(R.id.menu_frame_layout, fragmentChart).commitAllowingStateLoss();
         BottomNavigationView bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new ItemSelectedListener());
+
     }
+
 
     class ItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
         @Override

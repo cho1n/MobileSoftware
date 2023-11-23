@@ -3,19 +3,19 @@
 
     <item
         android:id="@+id/menu_input"
-        android:title="Menu1"
-        />
+        android:icon="@android:drawable/alert_light_frame"
+        android:title="Home" />
     <item
         android:id="@+id/menu_search"
-        android:title="Menu2"
-        />
+        android:icon="?android:attr/actionModeFindDrawable"
+        android:title="Analynis" />
     <item
         android:id="@+id/menu_month"
-        android:title="Menu3"
-        />
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Show" />
     <item
         android:id="@+id/menu_home"
-        android:title="Menu4"
-        />
+        android:icon="@android:drawable/ic_menu_upload"
+        android:title="Input" />
 
 </menu>
