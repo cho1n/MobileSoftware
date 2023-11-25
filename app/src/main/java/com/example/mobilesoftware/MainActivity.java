@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Random;
 
 
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     Uri uri;
     ImageView imageView;
+    byte[] imageByte;
 
     TextView dateText;
     DatePickerDialog datePickerDialog;
@@ -57,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
                                          public void onClick(View view) {
                                              String date = dateText.getText().toString();
                                              String kind = ((Spinner) findViewById(R.id.spinner_kind)).getSelectedItem().toString();
-                                             String imageUrl = uri.toString();
                                              String place = ((Spinner) findViewById(R.id.spinner_place)).getSelectedItem().toString();
                                              String foodName = ((EditText) findViewById(R.id.foodNameInput)).getText().toString();
                                              String cost = ((EditText) findViewById(R.id.foodCostInput)).getText().toString();
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                                              int calory = rnd.nextInt(300) + 300 ;
 
 
-                                             Food food = new Food(date, kind, imageUrl, place, foodName, cost, time, rating, calory);
+                                             Food food = new Food(date, kind, imageByte, place, foodName, cost, time, rating, calory);
 
                                              FoodDatabaseHelper dbHelper = new FoodDatabaseHelper(MainActivity.this);
                                              dbHelper.addFood(food);
@@ -138,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                             imageView.setImageBitmap(bitmap);
+                            imageByte = getBytesFromBitmap(bitmap);
                         }
                         catch (FileNotFoundException e) {
                             e.printStackTrace();
@@ -148,4 +150,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
-}
+    public byte[] getBytesFromBitmap(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        return stream.toByteArray();
+    }}

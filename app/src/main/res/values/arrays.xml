@@ -4,6 +4,8 @@
         <item>상록원 2층</item>
         <item>상록원 3층</item>
         <item>기숙사 식당</item>
+        <item>그루터기</item>
+        <item>교내카페</item>
     </string-array>
     <string-array name="kind_for_food">
         <item>조식</item>

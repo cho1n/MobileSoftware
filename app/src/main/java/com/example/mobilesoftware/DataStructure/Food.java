@@ -3,7 +3,7 @@ package com.example.mobilesoftware.DataStructure;
 public class Food {
     private String date;
     private String kind;
-    private String imageUrl;
+    private byte[] image;
     private String place;
     private String foodName;
     private String cost;
@@ -12,10 +12,10 @@ public class Food {
     private int calory;
 
     // 생성자
-    public Food(String date, String kind, String imageUrl, String place, String foodName, String cost, String time, String rating, int calory) {
+    public Food(String date, String kind, byte[] image, String place, String foodName, String cost, String time, String rating, int calory) {
         this.date = date;
         this.kind = kind;
-        this.imageUrl = imageUrl;
+        this.image = image;
         this.place = place;
         this.foodName = foodName;
         this.cost = cost;
@@ -33,8 +33,8 @@ public class Food {
         return kind;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public byte[] getImage() {
+        return image;
     }
 
     public String getPlace() {
@@ -68,8 +68,8 @@ public class Food {
         this.kind = kind;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     public void setPlace(String place) {

@@ -26,6 +26,7 @@ public class MainMenuChart extends Fragment {
         mTextView = (TextView) rootView.findViewById(R.id.dateView);
         mTextView.setText(getTime());
 
+
         return rootView;
     }
 

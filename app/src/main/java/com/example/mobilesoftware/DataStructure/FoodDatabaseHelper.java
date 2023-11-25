@@ -59,7 +59,7 @@ public class FoodDatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_DATE, food.getDate());
         values.put(COLUMN_KIND, food.getKind());
-        values.put(COLUMN_IMAGE_URL, food.getImageUrl());
+        values.put(COLUMN_IMAGE_URL, food.getImage());
         values.put(COLUMN_PLACE, food.getPlace());
         values.put(COLUMN_FOOD_NAME, food.getFoodName());
         values.put(COLUMN_COST, food.getCost());
