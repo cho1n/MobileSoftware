@@ -22,6 +22,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Random;
+
 
 import com.example.mobilesoftware.DataStructure.*;
 
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView dateText;
     DatePickerDialog datePickerDialog;
+    Random rnd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         dateText = findViewById(R.id.date_text_view);
         Button datePickerBtn = findViewById(R.id.date_picker_btn);
         Button submitBtn = findViewById(R.id.submitButton);
+        rnd = new Random();
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
                                          @Override
@@ -57,11 +63,15 @@ public class MainActivity extends AppCompatActivity {
                                              String cost = ((EditText) findViewById(R.id.foodCostInput)).getText().toString();
                                              String time = ((EditText) findViewById(R.id.foodTimeInput)).getText().toString();
                                              String rating = ((EditText) findViewById(R.id.foodRatingInput)).getText().toString();
+                                             int calory = rnd.nextInt(300) + 300 ;
 
-                                             Food food = new Food(date, kind, imageUrl, place, foodName, cost, time, rating);
+
+                                             Food food = new Food(date, kind, imageUrl, place, foodName, cost, time, rating, calory);
 
                                              FoodDatabaseHelper dbHelper = new FoodDatabaseHelper(MainActivity.this);
                                              dbHelper.addFood(food);
+
+                                             Toast.makeText(MainActivity.this, "입력되었습니다.", Toast.LENGTH_SHORT).show();
 
                                              Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                                              startActivity(intent);

@@ -21,6 +21,7 @@ public class FoodDatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_COST = "cost";
     private static final String COLUMN_TIME = "time";
     private static final String COLUMN_RATING = "rating";
+    private static final String COLUMN_Cal = "calory";
 
     // 생성자, onCreate, onUpgrade 등 필요한 메서드를 추가하세요
 
@@ -40,7 +41,8 @@ public class FoodDatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_FOOD_NAME + " TEXT, " +
                 COLUMN_COST + " TEXT, " +
                 COLUMN_TIME + " TEXT, " +
-                COLUMN_RATING + " TEXT)";
+                COLUMN_RATING + " TEXT, " +
+                COLUMN_Cal + " TEXT);";
         db.execSQL(CREATE_TABLE);
     }
 
@@ -63,9 +65,9 @@ public class FoodDatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_COST, food.getCost());
         values.put(COLUMN_TIME, food.getTime());
         values.put(COLUMN_RATING, food.getRating());
-
+        values.put(COLUMN_Cal, String.valueOf(food.getCalory()));
         // 데이터베이스에 데이터 삽입
         db.insert(TABLE_NAME, null, values);
-        db.close();
+
     }
 }

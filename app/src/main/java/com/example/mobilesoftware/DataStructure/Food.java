@@ -9,9 +9,10 @@ public class Food {
     private String cost;
     private String time;
     private String rating;
+    private int calory;
 
     // 생성자
-    public Food(String date, String kind, String imageUrl, String place, String foodName, String cost, String time, String rating) {
+    public Food(String date, String kind, String imageUrl, String place, String foodName, String cost, String time, String rating, int calory) {
         this.date = date;
         this.kind = kind;
         this.imageUrl = imageUrl;
@@ -20,6 +21,7 @@ public class Food {
         this.cost = cost;
         this.time = time;
         this.rating = rating;
+        this.calory = calory;
     }
 
     // Getter 메서드들
@@ -55,6 +57,8 @@ public class Food {
         return rating;
     }
 
+    public Integer getCalory() { return calory; }
+
     // Setter 메서드들
     public void setDate(String date) {
         this.date = date;
@@ -87,4 +91,6 @@ public class Food {
     public void setRating(String rating) {
         this.rating = rating;
     }
+
+    public void setCalory(int calory ) { this.calory = calory;}
 }
