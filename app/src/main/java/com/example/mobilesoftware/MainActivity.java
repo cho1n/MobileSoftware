@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -137,7 +138,8 @@ public class MainActivity extends AppCompatActivity {
                         uri = result.getData().getData();
 
                         try {
-                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                            ImageDecoder.Source source = ImageDecoder.createSource(getContentResolver(), uri);
+                            Bitmap bitmap = ImageDecoder.decodeBitmap(source);
                             imageView.setImageBitmap(bitmap);
                             imageByte = getBytesFromBitmap(bitmap);
                         }
@@ -153,5 +155,6 @@ public class MainActivity extends AppCompatActivity {
     public byte[] getBytesFromBitmap(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        return stream.toByteArray();
+        byte[] byteArray = stream.toByteArray();
+        return byteArray;
     }}

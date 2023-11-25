@@ -23,6 +23,9 @@ public class Food {
         this.rating = rating;
         this.calory = calory;
     }
+    public Food() {
+
+    }
 
     // Getter 메서드들
     public String getDate() {
@@ -57,7 +60,7 @@ public class Food {
         return rating;
     }
 
-    public Integer getCalory() { return calory; }
+    public int getCalory() { return calory; }
 
     // Setter 메서드들
     public void setDate(String date) {
