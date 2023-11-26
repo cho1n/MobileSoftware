@@ -105,11 +105,9 @@ public class FoodDatabaseHelper extends SQLiteOpenHelper {
                 foodList.add(food);
             } while (cursor.moveToNext());
 
-            // 커서를 닫습니다.
             cursor.close();
         }
 
-        // 데이터베이스 연결을 닫습니다.
         db.close();
 
         return foodList;
