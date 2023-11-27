@@ -2,13 +2,11 @@ package com.example.mobilesoftware;
 
 import android.content.Intent;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +16,6 @@ import android.widget.TextView;
 
 import com.example.mobilesoftware.DataStructure.Food;
 import com.example.mobilesoftware.DataStructure.FoodDatabaseHelper;
-
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -33,12 +29,12 @@ public class MainMenuChart extends Fragment {
     long mNow;
     Date mDate;
     SimpleDateFormat mFormat = new SimpleDateFormat("yyyy년 MM월 dd일의 식단입니다.");
-    TextView mTextView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_main_menu_chart, container, false);
 
+        TextView mTextView;
         mTextView = (TextView) rootView.findViewById(R.id.dateView);
         mTextView.setText(getTime());
 
@@ -51,7 +47,7 @@ public class MainMenuChart extends Fragment {
         FoodDatabaseHelper dbHelper = new FoodDatabaseHelper(requireContext());
         List<Food> foodList = dbHelper.getAllFoods();
         for (int i = 0; i < foodList.size(); i++) {
-            final int position = i;
+            final Food food = foodList.get(i);
             ImageView imageView;
             TextView nameView, timeView, costView, textView, placeView, calView;
             if (foodList.get(i).getKind().equals("조식")) {
@@ -61,7 +57,7 @@ public class MainMenuChart extends Fragment {
                 nameView.setText(foodList.get(i).getFoodName());
                 costView = rootView.findViewById(R.id.morning_cost);
                 costView.setText(foodList.get(i).getCost());
-                placeView = rootView.findViewById(R.id.morning_place);
+                placeView = rootView.findViewById(R.id.morning_place_text);
                 placeView.setText(foodList.get(i).getPlace());
                 calView = rootView.findViewById(R.id.morning_cal);
                 calView.setText(String.valueOf(foodList.get(i).getCalory()));
@@ -71,7 +67,7 @@ public class MainMenuChart extends Fragment {
                     public void onClick(View view) {
                         Intent intent = new Intent(requireContext(), DetailActivity.class);
 
-                        byte[] imageBytes = foodList.get(position).getImage();
+                        byte[] imageBytes = food.getImage();
                         if (imageBytes != null) {
                             String imagePath = saveImageToInternalStorage(imageBytes);
                             if (imagePath != null) {
@@ -82,12 +78,12 @@ public class MainMenuChart extends Fragment {
                         } else {
                             Log.e("MainMenuChart", "Image bytes is null");
                         }
-                        intent.putExtra("foodName", foodList.get(position).getFoodName());
-                        intent.putExtra("cost", foodList.get(position).getCost());
-                        intent.putExtra("place", foodList.get(position).getPlace());
-                        intent.putExtra("time", foodList.get(position).getTime());
-                        intent.putExtra("calory", String.valueOf(foodList.get(position).getCalory()));
-                        intent.putExtra("text", foodList.get(position).getRating());
+                        intent.putExtra("foodName", food.getFoodName());
+                        intent.putExtra("cost",food.getCost());
+                        intent.putExtra("place", food.getPlace());
+                        intent.putExtra("time", food.getTime());
+                        intent.putExtra("calory", String.valueOf(food.getCalory()));
+                        intent.putExtra("text", food.getRating());
 
                         startActivity(intent);
                     }
@@ -111,7 +107,7 @@ public class MainMenuChart extends Fragment {
                     public void onClick(View view) {
                         Intent intent = new Intent(requireContext(), DetailActivity.class);
 
-                        byte[] imageBytes = foodList.get(position).getImage();
+                        byte[] imageBytes = food.getImage();
                         if (imageBytes != null) {
                             String imagePath = saveImageToInternalStorage(imageBytes);
                             if (imagePath != null) {
@@ -121,12 +117,13 @@ public class MainMenuChart extends Fragment {
                             }
                         } else {
                             Log.e("MainMenuChart", "Image bytes is null");
-                        }                        intent.putExtra("foodName", foodList.get(position).getFoodName());
-                        intent.putExtra("cost", foodList.get(position).getCost());
-                        intent.putExtra("place", foodList.get(position).getPlace());
-                        intent.putExtra("time", foodList.get(position).getTime());
-                        intent.putExtra("calory", String.valueOf(foodList.get(position).getCalory()));
-                        intent.putExtra("text", foodList.get(position).getRating());
+                        }
+                        intent.putExtra("foodName", food.getFoodName());
+                        intent.putExtra("cost", food.getCost());
+                        intent.putExtra("place", food.getPlace());
+                        intent.putExtra("time", food.getTime());
+                        intent.putExtra("calory", String.valueOf(food.getCalory()));
+                        intent.putExtra("text", food.getRating());
 
                         startActivity(intent);
                     }
@@ -149,7 +146,7 @@ public class MainMenuChart extends Fragment {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(requireContext(), DetailActivity.class);
-                        byte[] imageBytes = foodList.get(position).getImage();
+                        byte[] imageBytes = food.getImage();
                         if (imageBytes != null) {
                             String imagePath = saveImageToInternalStorage(imageBytes);
                             if (imagePath != null) {
@@ -159,13 +156,14 @@ public class MainMenuChart extends Fragment {
                             }
                         } else {
                             Log.e("MainMenuChart", "Image bytes is null");
-                        }                        intent.putExtra("foodName", foodList.get(position).getFoodName());
-                        intent.putExtra("cost", foodList.get(position).getCost());
-                        intent.putExtra("place", foodList.get(position).getPlace());
-                        intent.putExtra("time", foodList.get(position).getTime());
-                        intent.putExtra("calory", String.valueOf(foodList.get(position).getCalory()));
-                        intent.putExtra("text", foodList.get(position).getRating());
-                        intent.putExtra("image", foodList.get(position).getImage());
+                        }
+                        intent.putExtra("foodName", food.getFoodName());
+                        intent.putExtra("cost", food.getCost());
+                        intent.putExtra("place", food.getPlace());
+                        intent.putExtra("time", food.getTime());
+                        intent.putExtra("calory", String.valueOf(food.getCalory()));
+                        intent.putExtra("text", food.getRating());
+                        intent.putExtra("image", food.getImage());
 
                         startActivity(intent);
                     }
@@ -189,7 +187,7 @@ public class MainMenuChart extends Fragment {
                     public void onClick(View view) {
                         Intent intent = new Intent(requireContext(), DetailActivity.class);
 
-                        byte[] imageBytes = foodList.get(position).getImage();
+                        byte[] imageBytes = food.getImage();
                         if (imageBytes != null) {
                             String imagePath = saveImageToInternalStorage(imageBytes);
                             if (imagePath != null) {
@@ -199,12 +197,13 @@ public class MainMenuChart extends Fragment {
                             }
                         } else {
                             Log.e("MainMenuChart", "Image bytes is null");
-                        }                        intent.putExtra("foodName", foodList.get(position).getFoodName());
-                        intent.putExtra("cost", foodList.get(position).getCost());
-                        intent.putExtra("place", foodList.get(position).getPlace());
-                        intent.putExtra("time", foodList.get(position).getTime());
-                        intent.putExtra("calory", String.valueOf(foodList.get(position).getCalory()));
-                        intent.putExtra("text", foodList.get(position).getRating());
+                        }
+                        intent.putExtra("foodName", food.getFoodName());
+                        intent.putExtra("cost", food.getCost());
+                        intent.putExtra("place", food.getPlace());
+                        intent.putExtra("time", food.getTime());
+                        intent.putExtra("calory", String.valueOf(food.getCalory()));
+                        intent.putExtra("text", food.getRating());
 
                         startActivity(intent);
                     }

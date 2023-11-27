@@ -112,4 +112,36 @@ public class FoodDatabaseHelper extends SQLiteOpenHelper {
 
         return foodList;
     }
+
+    public List<Food> getAllFoodss() {
+        List<Food> foodList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String todayDate = dateFormat.format(calendar.getTime());
+        Cursor cursor = db.query(TABLE_NAME, null, null, null, null, null, null);
+
+        if (cursor != null && cursor.moveToFirst() ) {
+            do {
+                Food food = new Food();
+                food.setDate(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE)));
+                food.setKind(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_KIND)));
+                food.setImage(cursor.getBlob(cursor.getColumnIndexOrThrow(COLUMN_IMAGE_URL)));
+                food.setPlace(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PLACE)));
+                food.setFoodName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FOOD_NAME)));
+                food.setCost(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_COST)));
+                food.setTime(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME)));
+                food.setRating(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_RATING)));
+                food.setCalory(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_Cal))));
+
+                foodList.add(food);
+            } while (cursor.moveToNext());
+
+            cursor.close();
+        }
+
+        db.close();
+
+        return foodList;
+    }
 }
