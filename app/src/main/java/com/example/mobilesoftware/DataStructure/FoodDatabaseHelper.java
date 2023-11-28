@@ -29,9 +29,6 @@ public class FoodDatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_RATING = "rating";
     private static final String COLUMN_Cal = "calory";
 
-    // 생성자, onCreate, onUpgrade 등 필요한 메서드를 추가하세요
-
-    // 예시: 생성자
     public FoodDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
