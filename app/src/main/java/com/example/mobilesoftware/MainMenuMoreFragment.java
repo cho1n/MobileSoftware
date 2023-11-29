@@ -39,7 +39,6 @@ public class MainMenuMoreFragment extends Fragment {
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 String date = year + "/" + (monthOfYear + 1) + "/" + dayOfMonth;
                 dateText.setText(date);
-                Log.d("settime", date);
                 displayFoodData(date);
             }
         });
@@ -50,12 +49,11 @@ public class MainMenuMoreFragment extends Fragment {
     private void displayFoodData(String selectedDate) {
         FoodDatabaseHelper dbHelper = new FoodDatabaseHelper(requireContext());
         List<Food> foodList = dbHelper.getAllFoodss();
-
+        clearTextViews();
         for (Food food : foodList) {
             String foodDate = food.getDate();
             if (selectedDate.equals(foodDate)) {
                 TextView nameView, costView, placeView, calView;
-
                 switch (food.getKind()) {
                     case "조식":
                         nameView = rootView.findViewById(R.id.morning_food_text);
@@ -108,7 +106,7 @@ public class MainMenuMoreFragment extends Fragment {
 
         for (int id : textViewIds) {
             TextView textView = rootView.findViewById(id);
-            textView.setText("");
+            textView.setText("-");
         }
     }
 }
