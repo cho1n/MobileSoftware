@@ -82,11 +82,11 @@ public class FoodDatabaseHelper extends SQLiteOpenHelper {
         String todayDate = dateFormat.format(calendar.getTime());
 
         String selection = COLUMN_DATE + "=?";
-        String[] sectionArgs = { todayDate };
+        String[] sectionArgs = {todayDate};
 
         Cursor cursor = db.query(TABLE_NAME, null, selection, sectionArgs, null, null, null);
 
-        if (cursor != null && cursor.moveToFirst() ) {
+        if (cursor != null && cursor.moveToFirst()) {
             do {
                 Food food = new Food();
                 food.setDate(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE)));
@@ -118,19 +118,45 @@ public class FoodDatabaseHelper extends SQLiteOpenHelper {
         String todayDate = dateFormat.format(calendar.getTime());
         Cursor cursor = db.query(TABLE_NAME, null, null, null, null, null, null);
 
-        if (cursor != null && cursor.moveToFirst() ) {
+        if (cursor != null && cursor.moveToFirst()) {
             do {
                 Food food = new Food();
                 food.setDate(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE)));
                 food.setKind(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_KIND)));
-                food.setImage(cursor.getBlob(cursor.getColumnIndexOrThrow(COLUMN_IMAGE_URL)));
                 food.setPlace(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PLACE)));
                 food.setFoodName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FOOD_NAME)));
                 food.setCost(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_COST)));
-                food.setTime(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME)));
-                food.setRating(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_RATING)));
                 food.setCalory(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_Cal))));
 
+                foodList.add(food);
+            } while (cursor.moveToNext());
+
+            cursor.close();
+        }
+
+        db.close();
+
+        return foodList;
+    }
+
+    public List<Food> monthlyGetAllFoods() {
+        List<Food> foodList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM"); // 변경된 부분
+        String thisMonth = dateFormat.format(calendar.getTime()); // 변수명 변경
+
+        String selection = COLUMN_DATE + " LIKE ?";
+        String[] sectionArgs = {thisMonth + "%"};
+        Cursor cursor = db.query(TABLE_NAME, null, selection, sectionArgs, null, null, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                Food food = new Food();
+                food.setDate(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE)));
+                food.setKind(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_KIND)));
+                food.setCost(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_COST)));
+                food.setCalory(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_Cal))));
                 foodList.add(food);
             } while (cursor.moveToNext());
 

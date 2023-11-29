@@ -20,6 +20,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/month_textView">
 
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/chart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -65,7 +75,7 @@
                 android:id="@+id/textView51"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="한 달 총 소비 비용  및 칼로리입니다."
+                android:text="한 달 총 소비 비용 및 칼로리입니다."
                 android:textColor="#ffffff"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -103,7 +113,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/morning_total_price" />
 
             <TextView
-                android:id="@+id/afternoon_total_price2"
+                android:id="@+id/evening_total_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -116,7 +126,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/afternoon_total_price" />
 
             <TextView
-                android:id="@+id/afternoon_total_price3"
+                android:id="@+id/snack_total_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -126,7 +136,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/textView40"
-                app:layout_constraintTop_toBottomOf="@+id/afternoon_total_price2" />
+                app:layout_constraintTop_toBottomOf="@+id/evening_total_price" />
 
             <TextView
                 android:id="@+id/textView41"
@@ -174,7 +184,7 @@
                 android:textColor="#ffffff"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/afternoon_total_price2"
+                app:layout_constraintStart_toEndOf="@+id/evening_total_price"
                 app:layout_constraintTop_toBottomOf="@+id/textView45" />
 
             <TextView
@@ -186,7 +196,7 @@
                 android:textColor="#ffffff"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/afternoon_total_price3"
+                app:layout_constraintStart_toEndOf="@+id/snack_total_price"
                 app:layout_constraintTop_toBottomOf="@+id/textView47" />
 
             <TextView
@@ -231,7 +241,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/afternoon_total_cal2"
+                app:layout_constraintStart_toEndOf="@+id/evening_total_cal"
                 app:layout_constraintTop_toBottomOf="@+id/textView46" />
 
             <TextView
@@ -246,7 +256,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/afternoon_total_cal3"
+                app:layout_constraintStart_toEndOf="@+id/snack_total_cal"
                 app:layout_constraintTop_toBottomOf="@+id/textView48" />
 
             <TextView
@@ -276,7 +286,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/morning_total_cal" />
 
             <TextView
-                android:id="@+id/afternoon_total_cal2"
+                android:id="@+id/evening_total_cal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -289,7 +299,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/afternoon_total_cal" />
 
             <TextView
-                android:id="@+id/afternoon_total_cal3"
+                android:id="@+id/snack_total_cal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -299,7 +309,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/textView49"
-                app:layout_constraintTop_toBottomOf="@+id/afternoon_total_cal2" />
+                app:layout_constraintTop_toBottomOf="@+id/evening_total_cal" />
 
             <TextView
                 android:id="@+id/textView38"

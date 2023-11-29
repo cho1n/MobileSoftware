@@ -51,8 +51,6 @@ public class MainMenuMoreFragment extends Fragment {
         FoodDatabaseHelper dbHelper = new FoodDatabaseHelper(requireContext());
         List<Food> foodList = dbHelper.getAllFoodss();
 
-        clearTextViews(); // TextView 초기화
-
         for (Food food : foodList) {
             String foodDate = food.getDate();
             if (selectedDate.equals(foodDate)) {
