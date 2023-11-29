@@ -45,51 +45,6 @@ public class MainMenuSearchFragment extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_main_menu_search, container, false);
         mTextView = (TextView) rootView.findViewById(R.id.month_textView);
 
-        ArrayList<Entry> entry_chart1 = new ArrayList<>(); // 데이터를 담을 Arraylist
-        ArrayList<Entry> entry_chart2 = new ArrayList<>();
-
-        lineChart = (LineChart) rootView.findViewById(R.id.chart);
-
-        LineData chartData = new LineData();
-
-        entry_chart1.add(new Entry(1, 1)); //entry_chart1에 좌표 데이터를 담는다.
-        entry_chart1.add(new Entry(2, 2));
-        entry_chart1.add(new Entry(3, 3));
-        entry_chart1.add(new Entry(4, 4));
-
-        entry_chart2.add(new Entry(1, 2)); //entry_chart2에 좌표 데이터를 담는다.
-        entry_chart2.add(new Entry(2, 3));
-        entry_chart2.add(new Entry(3, 1));
-        entry_chart2.add(new Entry(4, 4));
-
-        LineDataSet lineDataSet1 = new LineDataSet(entry_chart1, "총 비용");
-        LineDataSet lineDataSet2 = new LineDataSet(entry_chart2, "총 Kcal");
-
-        ArrayList<String> xLabels = new ArrayList<>();
-        xLabels.add("");
-        xLabels.add("아침");
-        xLabels.add("점심");
-        xLabels.add("저녁");
-        xLabels.add("음료 및 간식");
-
-        chartData.addDataSet(lineDataSet1);
-        chartData.addDataSet(lineDataSet2);
-
-        XAxis xAxis = lineChart.getXAxis();
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(xLabels));
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-
-        lineDataSet1.setColor(Color.parseColor("#F4CE14"));
-        lineDataSet1.setLineWidth(4);
-        lineDataSet2.setColor(Color.parseColor("#FFFFFF"));
-        lineDataSet2.setLineWidth(4);
-
-        lineChart.setData(chartData);
-        lineChart.invalidate();
-        lineChart.setTouchEnabled(false);
-
-        String currentMonth = getCurrentMonth();
-        mTextView.setText(currentMonth);
 
         morningTotalPriceTextView = rootView.findViewById(R.id.morning_total_price);
         morningTotalCalTextView = rootView.findViewById(R.id.morning_total_cal);
@@ -143,6 +98,53 @@ public class MainMenuSearchFragment extends Fragment {
         eveningTotalCalTextView.setText(String.valueOf(eveningTotalCal));
         snackTotalPriceTextView.setText(String.valueOf(snackTotalPrice));
         snackTotalCalTextView.setText(String.valueOf(snackTotalCal));
+
+        ArrayList<Entry> entry_chart1 = new ArrayList<>(); // 데이터를 담을 Arraylist
+        ArrayList<Entry> entry_chart2 = new ArrayList<>();
+
+        lineChart = (LineChart) rootView.findViewById(R.id.chart);
+
+        LineData chartData = new LineData();
+
+        entry_chart1.add(new Entry(1, morningTotalPrice)); //entry_chart1에 좌표 데이터를 담는다.
+        entry_chart1.add(new Entry(2, afternoonTotalPrice));
+        entry_chart1.add(new Entry(3, eveningTotalPrice));
+        entry_chart1.add(new Entry(4, snackTotalPrice));
+
+        entry_chart2.add(new Entry(1, morningTotalCal)); //entry_chart2에 좌표 데이터를 담는다.
+        entry_chart2.add(new Entry(2, afternoonTotalCal));
+        entry_chart2.add(new Entry(3, eveningTotalCal));
+        entry_chart2.add(new Entry(4, snackTotalCal));
+
+        LineDataSet lineDataSet1 = new LineDataSet(entry_chart1, "총 비용");
+        LineDataSet lineDataSet2 = new LineDataSet(entry_chart2, "총 Kcal");
+
+        ArrayList<String> xLabels = new ArrayList<>();
+        xLabels.add("");
+        xLabels.add("아침");
+        xLabels.add("점심");
+        xLabels.add("저녁");
+        xLabels.add("음료 및 간식");
+
+        chartData.addDataSet(lineDataSet1);
+        chartData.addDataSet(lineDataSet2);
+
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(xLabels));
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+        lineDataSet1.setColor(Color.parseColor("#F4CE14"));
+        lineDataSet1.setLineWidth(4);
+        lineDataSet2.setColor(Color.parseColor("#FFFFFF"));
+        lineDataSet2.setLineWidth(4);
+
+        lineChart.setData(chartData);
+        lineChart.invalidate();
+        lineChart.setTouchEnabled(false);
+
+        String currentMonth = getCurrentMonth();
+        mTextView.setText(currentMonth);
+
 
         return rootView;
     }
