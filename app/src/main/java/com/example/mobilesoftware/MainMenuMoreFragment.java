@@ -37,7 +37,10 @@ public class MainMenuMoreFragment extends Fragment {
         datePicker.init(pYear, pMonth, pDay, new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                String date = year + "/" + (monthOfYear + 1) + "/" + dayOfMonth;
+                monthOfYear = monthOfYear + 1;
+                String monthString = (monthOfYear < 10) ? "0" + monthOfYear : String.valueOf(monthOfYear);
+                String dayString = (dayOfMonth < 10) ? "0" + dayOfMonth : String.valueOf(dayOfMonth);
+                String date = year + "/" + monthString + "/" + dayString;
                 dateText.setText(date);
                 displayFoodData(date);
             }
@@ -52,6 +55,7 @@ public class MainMenuMoreFragment extends Fragment {
         clearTextViews();
         for (Food food : foodList) {
             String foodDate = food.getDate();
+            Log.d("Search", "Log name is" + foodDate);
             if (selectedDate.equals(foodDate)) {
                 TextView nameView, costView, placeView, calView;
                 switch (food.getKind()) {

@@ -93,8 +93,10 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                                 month = month + 1;
-                                String date = year + "/" + month + "/" + day;
+                                String monthString = (month < 10) ? "0" + month : String.valueOf(month);
+                                String dayString = (day < 10) ? "0" + day : String.valueOf(day);
 
+                                String date = year + "/" + monthString + "/" + dayString;
                                 dateText.setText(date);
                             }
                         }, pYear, pMonth, pDay);
